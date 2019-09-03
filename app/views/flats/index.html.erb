@@ -1,0 +1,53 @@
+<div class="bg-light">
+<div class="container bg-light">
+
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Flats</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h5>Your searched for x. We found x flats out of <%= @flats.length %></h5>
+    </div>
+  </div>
+
+  <div class="row">
+
+      <% @flats.each do |flat| %>
+        <div class="col-4">
+         <div class="card">
+          <%= image_tag("flat", class: "card-img-top") %>
+
+          <div class="card-body bg-light">
+            <h2><%= flat.name%></h2>
+            <p><%= flat.address %></p>
+
+            <div class="d-flex justify-content-start">
+              <p class="mr-4"><i class="fas fa-user-friends mr-2" ></i><%= flat.number_of_guests %></p>
+              <p class="mr-4"><i class="fas fa-euro-sign mr-2" ></i><%= flat.price_per_night %></p>
+            </div>
+
+
+            <div class="border-top">
+              <p><%= link_to "More info", flat_path(flat) %></p>
+              <p><%= link_to "Edit", edit_flat_path(flat) %></p>
+              <p><%= link_to "Remove", flat_path(flat),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></p>
+            </div>
+
+          </div>
+
+        </div>
+       </div>
+      <% end %>
+
+
+  </div>
+
+
+</div>
+
+</div>
